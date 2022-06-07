@@ -28,12 +28,6 @@ function clickFileButton(){
     
 }
 function clickNumberButton(){
-    // 1) Inserir um campo de input com a mensagem "informe um valor entre 5 a 10"
-    // 2) Verifica se é nulo, se for, lança exception "Informe um valor" 
-    // 3) Verifica se é maior que 5 e menor que 10, se não for, lança exception 
-    // "Informe um valor maior que 5 e menor que 10"
-    // 4) Se o try falhar, lançar exception "Erro + erro javascript"
-    // 5) No finnaly informar "O número escolhido foi + " numero
 
     document.getElementById("outputnumber").innerHTML = "";
     num = document.getElementById("inputnumber").value;
@@ -41,12 +35,18 @@ function clickNumberButton(){
 
     try{
         if (num == '') throw ' Informe um valor';
-        if (num < 5 || num > 10) throw ' Informe um valor maior que 5 e menor que 10';
+        if (num <= 5 || num >= 10) throw ' Informe um valor maior que 5 e menor que 10';
+        if (isNaN(num))
+        {
+            num = "NaN"
+            throw ' Informe um valor maior que 5 e menor que 10';
+            
+        } 
 
     }
     
     catch(error){
-        alert("Erro: " + error)
+        console.log("Erro:" + error)
         document.getElementById("outputnumber").innerHTML = error
     }
     finally
